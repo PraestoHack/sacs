@@ -19,12 +19,10 @@ class MyGame(arcade.Window):
 
 
     def setup(self):
-
         pass
 
     def on_draw(self):
         arcade.start_render()
-
 
     def on_update(self, delta_time):
         pass
