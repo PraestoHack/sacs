@@ -14,20 +14,33 @@ class Partida():
         self.center_y = altura_tela/2
         self.selecao = Selecao_partida(self.center_x,self.altura_tela - 50)
         self.vaca = arcade.Sprite("img/vaca.jpg",center_x=self.center_x,center_y=self.center_y + 60,scale=0.4)
+        self.patos = arcade.Sprite("img/patos.jpg",center_x=self.center_x,center_y=self.center_y + 60,scale=0.4)
         voltar = Botao_voltar_ao_menu(80,self.altura_tela-50)
         repetir = Botao_repetir(self.largura_tela-80,self.altura_tela-50)
         self.somar = Botao_mais(self.center_x,220)
         self.sub = Botao_menos(self.center_x,175)
         self.lista_botoes = [voltar,repetir,self.somar,self.sub]
-        self.numero =0
+        self.numero = 0
+        self.timer = 0
+        self.tempo_trocar = 2
+        self.trocar = False
+
+    def setup(self):
+        self.timer = 0
+        self.numero = 0
+        self.trocar = False
 
     def draw(self):
         #fundo
         arcade.draw_rectangle_filled(self.center_x,self.center_y,self.largura_tela, self.altura_tela,(20, 73, 107))
         arcade.draw_rectangle_filled(self.center_x,self.center_y,self.largura_tela, self.altura_tela - 200,(19,106,159,240))
         arcade.draw_rectangle_filled(self.center_x,self.center_y-170,140,40,(20, 73, 107,240))
+        arcade.draw_text(DESCRICAO_PROBLEMA,self.center_x,560,arcade.color.WHITE,14,anchor_x="center",anchor_y="center")
         arcade.draw_text(str(self.numero),self.center_x,self.center_y-170,arcade.color.WHITE,14,anchor_x="center",anchor_y="center")
-        self.vaca.draw()
+        if not self.trocar:
+            self.vaca.draw()
+        else:
+            self.patos.draw()
         #botoes
         if self.selecao.coluna_atual == COLUNA1:
             self.selecao.draw()
@@ -68,6 +81,13 @@ class Partida():
         elif acao == VERIFICAR_RESULTADO:
             if self.numero == RESPOSTA_PARTIDA:
                 #COLOCAR SOM E TALS
+                print("RESPOSTA CORRETA")
                 return MENU
         else:
             return acao
+
+    def update(self,delta_time):
+        self.timer += delta_time
+        if self.timer >= self.tempo_trocar:
+            self.trocar = True
+            self.timer = 0

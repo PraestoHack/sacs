@@ -9,12 +9,15 @@ class Selecao_partida(Selecao):
 
     def on_key_release(self, key, key_modifiers):
         #mover a box
+        #para baixo
         if key == arcade.key.DOWN and self.coluna_atual == COLUNA1:
             self.coluna_atual = COLUNA2
         elif key == arcade.key.DOWN and self.coluna_atual == COLUNA2:
             self.coluna_atual = COLUNA3
         elif key == arcade.key.DOWN and self.coluna_atual == COLUNA3:
             self.coluna_atual = COLUNA4
+
+        #para cima
         elif key == arcade.key.UP and self.coluna_atual == COLUNA4:
             self.coluna_atual = COLUNA3
         elif key == arcade.key.UP and self.coluna_atual == COLUNA3:
@@ -53,12 +56,14 @@ class Selecao_partida(Selecao):
          
 
     def on_mouse_scroll(self, x: int, y: int, scroll_x: int, scroll_y: int):
+        #mover pra baixo
         if scroll_y <= SCROLL_BAIXO and self.coluna_atual == COLUNA1:
             self.coluna_atual = COLUNA2
         elif scroll_y <= SCROLL_BAIXO and self.coluna_atual == COLUNA2:
             self.coluna_atual = COLUNA3
         elif scroll_y <= SCROLL_BAIXO and self.coluna_atual == COLUNA3:
             self.coluna_atual = COLUNA4
+        #mover pra cima
         elif scroll_y >= SCROLL_CIMA and self.coluna_atual == COLUNA4:
             self.coluna_atual = COLUNA3
         elif scroll_y >= SCROLL_CIMA and self.coluna_atual == COLUNA3:
@@ -83,5 +88,5 @@ class Selecao_partida(Selecao):
         elif button == arcade.MOUSE_BUTTON_RIGHT and self.coluna_atual == COLUNA3:
             #som
             pass
-        elif button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == coluna4:
+        elif button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == COLUNA4:
             return VERIFICAR_RESULTADO

@@ -2,17 +2,7 @@ import arcade
 from telas.menu import Menu
 from telas.partida import Partida
 from config import *
-'''
-LARGURA_TELA = 800
-ALTURA_TELA = 600
-TITULO_TELA = "SACS - SOFTWARE DE ACESSIBILIDADE PARA CEGOS E SURDOS"
 
-#estados do jogo
-SAIR = -1
-MENU = 0
-PARTIDA = 1
-AJUDA = 2
-'''
 class MyGame(arcade.Window):
 
     def __init__(self, largura, altura, titulo):
@@ -38,20 +28,14 @@ class MyGame(arcade.Window):
             self.close()
 
     def on_update(self, delta_time):
-        pass
+        if self.estado_atual == PARTIDA:
+            self.partida.update(delta_time)
 
     def on_key_press(self, key, key_modifiers):
         pass
 
-    def on_key_release(self, key, key_modifiers):
-        if self.estado_atual == MENU:
-            acao = self.menu.on_key_release(key,key_modifiers)
-            if acao is not None:
-                self.estado_atual = acao
-        if self.estado_atual == PARTIDA:
-            acao = self.partida.on_key_release(key,key_modifiers)
-            if acao is not None:
-                acao = self.partida.on_mouse_release(x,y,button,modifiers)
+    
+                
 
     def on_mouse_scroll(self, x: int, y: int, scroll_x: int, scroll_y: int):
         if self.estado_atual == MENU:
@@ -64,11 +48,32 @@ class MyGame(arcade.Window):
             acao = self.menu.on_mouse_release(x,y,button,modifiers)
             if acao is not None:
                 self.estado_atual = acao
+                if self.estado_atual != MENU:
+                    self.menu.kill()
+
         if self.estado_atual == PARTIDA:
             acao = self.partida.on_mouse_release(x,y,button,modifiers)
             if acao is not None:
-                acao = self.partida.on_mouse_release(x,y,button,modifiers)
+                self.estado_atual = acao
+                if self.estado_atual != PARTIDA:
+                    self.partida.setup()
+                    self.partida.kill()
 
+    def on_key_release(self, key, key_modifiers):
+        if self.estado_atual == MENU:
+            acao = self.menu.on_key_release(key,key_modifiers)
+            if acao is not None:
+                self.estado_atual = acao
+                if self.estado_atual != MENU:
+                    self.menu.kill()
+        if self.estado_atual == PARTIDA:
+            acao = self.partida.on_key_release(key,key_modifiers)
+            if acao is not None:
+                self.estado_atual = acao
+                if self.estado_atual != PARTIDA:
+                    self.partida.setup()
+                    self.partida.kill()
+                    
 def main():
     game = MyGame(LARGURA_TELA, ALTURA_TELA, TITULO_TELA)
     game.setup()

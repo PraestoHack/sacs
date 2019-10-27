@@ -1,6 +1,7 @@
 import arcade
 from botoes.botao_jogar import Botao_jogar
 from botoes.botao_ajuda import Botao_ajuda
+from botoes.botao_manual import Botao_manual
 from botoes.botao_sair import Botao_sair
 from box_selecoes.selecao_menu import Selecao_menu
 from config import *
@@ -22,7 +23,7 @@ class Menu():
 
         #criar botoes e jogar numa lista de botoes
         jogar = Botao_jogar(self.center_x-100,self.center_y+130)
-        ajuda = Botao_ajuda(self.center_x+100,self.center_y+130)
+        ajuda = Botao_manual(self.center_x+100,self.center_y+130)
         ajuda2 = Botao_ajuda(self.center_x+100,self.center_y-100)
         sair = Botao_sair(self.center_x-100,self.center_y-100)
         self.lista_botoes = [jogar,ajuda,ajuda2,sair]
@@ -39,7 +40,7 @@ class Menu():
         arcade.draw_rectangle_filled(self.center_x,0+50,self.largura_tela,2,(31,35,58))
         arcade.draw_text(DESCRICAO_MENU,10,560,arcade.color.WHITE,14,font_name='arial')
         arcade.draw_text(TEXTO_JOGAR,self.center_x-117,self.center_y+60,arcade.color.WHITE,14)
-        arcade.draw_text(TEXTO_AJUDA,self.center_x+77,self.center_y+60,arcade.color.WHITE,14)
+        arcade.draw_text(TEXTO_MANUAL,self.center_x+77,self.center_y+60,arcade.color.WHITE,14)
         arcade.draw_text(TEXTO_AJUDA,self.center_x+77,self.center_y-170,arcade.color.WHITE,14)
         arcade.draw_text(TEXTO_SAIR,self.center_x-115,self.center_y-170,arcade.color.WHITE,14)
         self.selecao.draw()

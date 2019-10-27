@@ -35,7 +35,9 @@ class Selecao_menu(Selecao):
     def on_mouse_release(self, x, y, button, modifiers):
         if button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == COLUNA1:
             return PARTIDA
+
         if button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == COLUNA2:
             return SAIR
+            
         if button == arcade.MOUSE_BUTTON_RIGHT:
             return AJUDA

@@ -30,7 +30,7 @@ COLUNA5 = "COLUNA5"
 
 SAIR = -1
 MENU = 0
-PARTIDA = 1
+PARTIDA = "PARTIDA"
 AJUDA = 2
 SOMAR = 'somar'
 SUBTRAIR = 'subtrair'
@@ -38,8 +38,13 @@ VERIFICAR_RESULTADO = "VERIFICAR"
 
 DESCRICAO_MENU = '''Você está no menu, a tela inicial do jogo. As ações que você pode fazer aqui são: iniciar uma partida, 
 pedir ajuda ou sair do jogo'''
+DESCRICAO_PROBLEMA ='''Você foi para uma fazenda e econtrou uma vaca. Em seguida apareceu 
+um pato e uma pata, mas a vaquinha entediada saiu para pastar.
+Quantos animais sobraram?'''
+
 TEXTO_JOGAR = 'Jogar'
 TEXTO_AJUDA = 'Ajuda'
+TEXTO_MANUAL = 'Manual'
 TEXTO_SAIR = 'Sair'
 
 
