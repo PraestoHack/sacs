@@ -97,6 +97,8 @@ class Selecao_partida(Selecao):
             return SOMAR
         elif button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == COLUNA3:
             return SUBTRAIR
+        elif button == arcade.MOUSE_BUTTON_LEFT and self.coluna_atual == COLUNA4:
+            return VERIFICAR_RESULTADO
         elif button == arcade.MOUSE_BUTTON_RIGHT:
             arcade.play_sound(self.descr_prob)
         
