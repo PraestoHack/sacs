@@ -1,20 +1,22 @@
 import arcade
+from telas.menu import Menu
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Starting Template"
+LARGURA_TELA = 800
+ALTURA_TELA = 600
+TITULO_TELA = "SACS - SOFTWARE DE ACESSIBILIDADE PARA CEGOS E SURDOS"
 
 #estados do jogo
 SAIR = -1
 MENU = 0
 PARTIDA = 1
-
+AJUDA = 2
 
 class MyGame(arcade.Window):
 
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
-
+    def __init__(self, largura, altura, titulo):
+        super().__init__(largura,altura,titulo)
+        self.estado_atual = MENU
+        self.menu = Menu(LARGURA_TELA,ALTURA_TELA)
         arcade.set_background_color(arcade.color.AMAZON)
 
 
@@ -23,6 +25,14 @@ class MyGame(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
+        if self.estado_atual == MENU:
+            self.menu.draw()
+        elif self.estado_atual == AJUDA:
+            pass
+        elif self.estado_atual == PARTIDA:
+            pass
+        elif self.estado_atual == SAIR:
+            self.close()
 
     def on_update(self, delta_time):
         pass
@@ -31,20 +41,11 @@ class MyGame(arcade.Window):
         pass
 
     def on_key_release(self, key, key_modifiers):
-        pass
-
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        pass
-
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        pass
+        self.menu.on_key_release(key,key_modifiers)
 
 
 def main():
-    game = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    game = MyGame(LARGURA_TELA, ALTURA_TELA, TITULO_TELA)
     game.setup()
     arcade.run()
 
