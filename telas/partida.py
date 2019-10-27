@@ -24,6 +24,8 @@ class Partida():
         self.timer = 0
         self.tempo_trocar = 2
         self.trocar = False
+        self.som_erro = arcade.load_sound('sons/erro.wav')
+        self.som_acerto = arcade.load_sound('sons/acerto.wav') 
 
     def setup(self):
         self.timer = 0
@@ -63,8 +65,11 @@ class Partida():
                 self.numero -= 1
         elif acao == VERIFICAR_RESULTADO:
             if self.numero == RESPOSTA_PARTIDA:
+                arcade.play_sound(self.som_acerto)
                 #COLOCAR SOM E TALS
                 return MENU
+            else:
+                arcade.play_sound(self.som_erro)
         else:
             return acao 
 
@@ -80,9 +85,12 @@ class Partida():
                 self.numero -= 1
         elif acao == VERIFICAR_RESULTADO:
             if self.numero == RESPOSTA_PARTIDA:
+                arcade.play_sound(self.som_acerto)
                 #COLOCAR SOM E TALS
                 print("RESPOSTA CORRETA")
                 return MENU
+            else:
+                arcade.play_sound(self.som_erro)
         else:
             return acao
 

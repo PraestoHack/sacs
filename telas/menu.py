@@ -37,7 +37,7 @@ class Menu():
         arcade.draw_rectangle_filled(self.center_x,self.center_y,self.largura_tela, self.altura_tela - 100,(19,106,159,240))
 
         arcade.draw_rectangle_filled(self.center_x,self.altura_tela-50,self.largura_tela,2,(31,35,58))
-        arcade.draw_rectangle_filled(self.center_x,0+50,self.largura_tela,2,(31,35,58))
+        arcade.draw_rectangle_filled(self.center_x,50,self.largura_tela,2,(31,35,58))
         arcade.draw_text(DESCRICAO_MENU,10,560,arcade.color.WHITE,14,font_name='arial')
         arcade.draw_text(TEXTO_JOGAR,self.center_x-117,self.center_y+60,arcade.color.WHITE,14)
         arcade.draw_text(TEXTO_MANUAL,self.center_x+77,self.center_y+60,arcade.color.WHITE,14)
