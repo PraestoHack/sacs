@@ -1,4 +1,5 @@
 import arcade
+from config import *
 
 #botão base
 class Botao:
