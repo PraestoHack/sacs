@@ -15,6 +15,8 @@ from config import *
 class Menu():
 
     def __init__(self,largura_tela,altura_tela):
+        
+
         self.largura_tela = largura_tela
         self.altura_tela = altura_tela
         self.center_x = largura_tela/2
@@ -27,6 +29,9 @@ class Menu():
         ajuda2 = Botao_ajuda(self.center_x+100,self.center_y-100)
         sair = Botao_sair(self.center_x-100,self.center_y-100)
         self.lista_botoes = [jogar,ajuda,ajuda2,sair]
+    
+    def setup(self):
+        arcade.play_sound(self.selecao.som_descr)
         
     def draw(self):
         #fundo
@@ -48,6 +53,7 @@ class Menu():
         #botoes
         for botao in self.lista_botoes:
             botao.draw()
+        
 
     def on_key_release(self, key, key_modifiers):
         acao = self.selecao.on_key_release(key,key_modifiers)

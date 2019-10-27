@@ -22,7 +22,8 @@ class Partida():
         self.lista_botoes = [voltar,repetir,self.somar,self.sub]
         self.numero = 0
         self.timer = 0
-        self.tempo_trocar = 2
+        self.vez1 = True
+        self.tempo_trocar = 5
         self.trocar = False
         self.som_erro = arcade.load_sound('sons/erro.wav')
         self.som_acerto = arcade.load_sound('sons/acerto.wav') 
@@ -31,9 +32,13 @@ class Partida():
         self.timer = 0
         self.numero = 0
         self.trocar = False
-
+        self.vez1 = True
+        #arcade.play_sound(self.selecao.descr_prob)
+    
     def draw(self):
+        
         #fundo
+        
         arcade.draw_rectangle_filled(self.center_x,self.center_y,self.largura_tela, self.altura_tela,(20, 73, 107))
         arcade.draw_rectangle_filled(self.center_x,self.center_y,self.largura_tela, self.altura_tela - 200,(19,106,159,240))
         arcade.draw_rectangle_filled(self.center_x,self.center_y-170,140,40,(20, 73, 107,240))
@@ -55,7 +60,7 @@ class Partida():
 
         for botao in self.lista_botoes:
             botao.draw()
-
+        
     def on_key_release(self, key, key_modifiers):
         acao = self.selecao.on_key_release(key,key_modifiers)
         if acao == SOMAR:

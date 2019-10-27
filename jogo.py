@@ -1,6 +1,7 @@
 import arcade
 from telas.menu import Menu
 from telas.partida import Partida
+import pyttsx3
 from config import *
 
 class MyGame(arcade.Window):
@@ -12,10 +13,12 @@ class MyGame(arcade.Window):
         self.partida = Partida(LARGURA_TELA,ALTURA_TELA)
         arcade.set_background_color(arcade.color.AMAZON)
 
-
     def setup(self):
-        pass
-
+        if self.estado_atual == MENU:
+            self.menu.setup()
+        elif self.estado_atual == PARTIDA:
+            self.partida.setup()
+            
     def on_draw(self):
         arcade.start_render()
         if self.estado_atual == MENU:
@@ -73,12 +76,13 @@ class MyGame(arcade.Window):
                 if self.estado_atual != PARTIDA:
                     self.partida.setup()
                     self.partida.kill()
-                    
+
 def main():
     game = MyGame(LARGURA_TELA, ALTURA_TELA, TITULO_TELA)
     game.setup()
     arcade.run()
 
+#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_PT-BR_MARIA_11.0
 
 if __name__ == "__main__":
     main()

@@ -1,3 +1,5 @@
+import pyttsx3
+
 #CONFIG TELAS
 LARGURA_TELA = 800
 ALTURA_TELA = 600
@@ -38,9 +40,18 @@ VERIFICAR_RESULTADO = "VERIFICAR"
 
 DESCRICAO_MENU = '''Você está no menu, a tela inicial do jogo. As ações que você pode fazer aqui são: iniciar uma partida, 
 pedir ajuda ou sair do jogo'''
-DESCRICAO_PROBLEMA ='''Você foi para uma fazenda e econtrou uma vaca. Em seguida apareceu 
-um pato e uma pata, mas a vaquinha entediada saiu para pastar.
+FALA_COLUNA1_MENU = '''clique com o botão esquerdo para iniciar uma partida ou com o direito para ouvir essa mensagem novamente.
+A partida funciona como um jogo de perguntas e respostas baseadas no som que você ouvirá.'''
+FALA_COLUNA2_MENU = '''clique com o botão esquerdo para sair do jogou no direito para ouvir essa mensagem novamente'''
+FALA_COLUNA1_PARTIDA = '''Clique com o botão esquerdo para voltar para o menu ou no direito para ouvir o desafio novamente'''
+FALA_COLUNA2_PARTIDA ='''Clique com o botão esquerdo para somar ou no direito para ouvir o desafio novamente'''
+FALA_COLUNA3_PARTIDA ='''Clique com o botão esquerdo para subtrair ou no direito para ouvir o desafio novamente'''
+FALA_COLUNA4_PARTIDA ='''Clique para com o botão esquerdo para verificar a resposta ou com o direito para ouvir o desafio novamente'''
+DESCRICAO_PROBLEMA ='''Problema: Você foi para uma fazenda e econtrou uma vaca. 
+Em seguida apareceu um pato e uma pata, mas a vaquinha 
+entediada saiu para pastar.
 Quantos animais sobraram?'''
+
 
 TEXTO_JOGAR = 'Jogar'
 TEXTO_AJUDA = 'Ajuda'
@@ -52,3 +63,13 @@ RESPOSTA_PARTIDA = 2
 
 TAMANHO_BOX_MENOS = 46.2
 TAMANHO_BOX_MAIS = 56
+
+
+def falar_frase(frase):
+    engine = pyttsx3.init()
+    id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_PT-BR_MARIA_11.0"
+    engine.setProperty('voice', id)
+    engine.say(frase)
+    engine.save_to_file(frase,"teste", "sons/")
+    engine.runAndWait()
+    
