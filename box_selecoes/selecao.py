@@ -3,7 +3,7 @@ import arcade
 class Selecao(arcade.Sprite):
     def __init__(self,img,center_x,center_y,escala=1):
         super().__init__(img,center_x=center_x,center_y=center_y,scale=1)
-        self.som_selecionar = arcade.load_sound('sons/selecionar.wav')
+        
 
     def update(self, delta_time):
         pass

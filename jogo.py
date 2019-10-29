@@ -38,8 +38,7 @@ class MyGame(arcade.Window):
         pass
 
     
-                
-
+            
     def on_mouse_scroll(self, x: int, y: int, scroll_x: int, scroll_y: int):
         if self.estado_atual == MENU:
             self.menu.on_mouse_scroll(x,y,scroll_x,scroll_y)
